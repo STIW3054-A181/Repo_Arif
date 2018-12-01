@@ -17,9 +17,15 @@ Display the statistics of the analyzed files very ONE (1) second.
 
 
 OUTPUT:
-Number of words
-Number of characters
-Standard Deviation of the number of characters per word
-Calculate z-score
-Plot normalization graph
-Plot the boxplot
+
+1. Number of words
+
+2. Number of characters
+
+3. Standard Deviation of the number of characters per word
+
+4. Calculate z-score
+
+5. Plot normalization graph
+
+6. Plot the boxplot
