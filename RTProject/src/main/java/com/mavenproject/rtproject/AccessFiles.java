@@ -127,9 +127,9 @@ public class AccessFiles {
     }
 
     /*
-    This method is used for read PDF files which is previously downloaded, it will write the texts
-    to ArrayList as String, each file's text will be stored in each node. If there are 5 files, there
-    will be 5 nodes inside ArrayList.
+    This method require files name that is stored in ArrayList. This method is used for read PDF files
+    which is previously downloaded, it will write the texts to ArrayList too as String, each file's texts
+    will be stored in each node. If there are 5 files, there will be 5 nodes inside ArrayList.
      */
     public ArrayList<String> readFiles(ArrayList<String> listFiles) {
         ArrayList<String> textInFile = new ArrayList();
