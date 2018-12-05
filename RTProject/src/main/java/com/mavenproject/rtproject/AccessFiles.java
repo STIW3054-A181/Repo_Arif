@@ -12,14 +12,16 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
-import com.itextpdf.text.pdf.PdfReader;
-import com.itextpdf.text.pdf.parser.PdfTextExtractor;
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
 
 /**
  *
  * @author Gifhary
  */
 public class AccessFiles {
+
+    public String folderName = null;
 
     /*
     This method required URL source and file name for the downloaded file
@@ -69,8 +71,7 @@ public class AccessFiles {
     method between this two method to avoid confusion. The first entry in the zip file must be a folder/directory.
     If not, the other method which depending on this won't work properly.
      */
-    public String unzip(String zipFile) {
-        String folderName = null;
+    public void unzip(String zipFile) {
         try {
             ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
             ZipEntry entry = zipIn.getNextEntry();
@@ -96,8 +97,6 @@ public class AccessFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        return folderName;
     }
 
     //Here it is :) let this method stay under unzip method
@@ -115,7 +114,7 @@ public class AccessFiles {
     This method will listing all file names in a directory and returning all the names in String
     as an ArrayList. This method required folder/directory name as a String to work.
      */
-    public ArrayList<String> listFiles(String folderName) {
+    public ArrayList<String> listFiles() {
         ArrayList<String> fileNames = new ArrayList();
 
         File dir = new File(folderName);
@@ -127,27 +126,25 @@ public class AccessFiles {
         return fileNames;
     }
 
-    
     /*
-    This method is used for read PDF files which is
-    */
+    This method is used for read PDF files which is previously downloaded, it will write the texts
+    to ArrayList as String, each file's text will be stored in each node. If there are 5 files, there
+    will be 5 nodes inside ArrayList.
+     */
     public ArrayList<String> readFiles(ArrayList<String> listFiles) {
         ArrayList<String> textInFile = new ArrayList();
         try {
             for (int i = 0; i < listFiles.size(); i++) {//loop for each file in the directory
+
+                PDDocument document = PDDocument.load(new File(folderName + listFiles.get(i)));
+                PDFTextStripper stripper = new PDFTextStripper();
+                String text = stripper.getText(document);
                 
-                PdfReader pdfReader = new PdfReader(listFiles.get(i));
-                int pages = pdfReader.getNumberOfPages();
-
-                for (int j = 0; j <pages; j++) {//loop for each page in the file
-
-                    String pageContent = PdfTextExtractor.getTextFromPage(pdfReader, j);
-
-                    textInFile.add(pageContent);
-                }
-                pdfReader.close();
+                textInFile.add(text);
+                
+                document.close();
             }
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
