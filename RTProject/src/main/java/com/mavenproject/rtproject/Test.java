@@ -19,7 +19,7 @@ public class Test {
         URL url = new URL("https://github.com/gifhary/Test_File/archive/master.zip");//github repo download link
 
         File setFileName = new File("TargetFile.zip");//set the file downloaded file name
-        String zipFile = "TargetFile.zip";//the file name in String
+        String zipFile = "TargetFile.zip";//input file name in String, it should be same as setFileName
 
         AccessFiles m = new AccessFiles();//declare accessFile object
         m.downloadZip(url, setFileName);//downloading file from URL and the file name
