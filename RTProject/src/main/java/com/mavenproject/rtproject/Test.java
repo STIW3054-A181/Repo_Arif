@@ -13,9 +13,9 @@ import java.util.ArrayList;
  * @author Gifhary
  */
 public class Test {
-
-    public static void main(String[] args) throws MalformedURLException {
-
+    
+    public static void main(String[] args) throws MalformedURLException, InterruptedException {
+        
         URL url = new URL("https://github.com/gifhary/Test_File/archive/master.zip");//github repo download link
 
         File setFileName = new File("TargetFile.zip");//set the file downloaded file name
@@ -28,8 +28,18 @@ public class Test {
         ArrayList<String> textInFile = new ArrayList();//ArrayList to store texts from all files
         textInFile = m.readFiles(m.listFiles());//assign returned ArrayList from readFile() method to "list" ArrayList
 
+        ArrayList<int[]> characterNumber = new ArrayList();
+        
         for (int i = 0; i < textInFile.size(); i++) {
-            System.out.println(textInFile.get(i));//print all text inside every file
+            //System.out.println(textInFile.get(i)); print all text inside every file
+            characterNumber.add(CharPerWordCounter.countCharPerWord(textInFile.get(i)));
+            
+            System.out.println("");
+            System.out.println("File Name : " + m.listFiles().get(i));
+            System.out.println("Number Of Words : " + WordCounter.countWord(textInFile.get(i)));
+            System.out.println("Number Of Characters : ");
+            System.out.println("Standard Deviation : " + StandardDeviation.calculateSD(characterNumber.get(i)));
+            Thread.sleep(1000);
         }
         
     }
