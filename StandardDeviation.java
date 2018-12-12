@@ -7,7 +7,7 @@ the method will return the standard deviation value for other use if needed
 */
 public class StandardDeviation {
 
-    public double calculate(double[] values) {
+    public double calculateSD(double[] values) {
 
         double sum = 0;
         double finalsum = 0;
@@ -28,13 +28,14 @@ public class StandardDeviation {
         for (int i = 0; i < values.length; i++) {
             double fvalue = (Math.pow((values[i] - average), 2));
             x1_average[i] = fvalue;
+            //System.out.println("test : " + fvalue);
         }
 
         for (double i : x1_average) {
             finalsumX = (sumX += i);
         }
 
-        Double AverageX = finalsumX / (values.length);
+        double AverageX = finalsumX / (values.length);
         double stDeviation = Math.sqrt(AverageX);
         System.out.println("Standard Deviation : " + stDeviation);
 
