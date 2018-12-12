@@ -1,5 +1,5 @@
 # Real Time Project 2018
-MASTER EDITION
+DEVELOPMENT EDITION
 
 Team Members :-
 
