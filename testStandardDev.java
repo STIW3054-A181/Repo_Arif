@@ -1,6 +1,5 @@
 package com.mavenproject.rtproject;
 
-
 public class testStandardDev {
 
     public static void main(String[] args){
