@@ -1,5 +1,6 @@
 package com.mavenproject.rtproject;
 
+
 /*
 This class contain method to calculate standard deviation of a data that stored in array as double
 it will print average, total number in the array and the standard deviation
@@ -7,7 +8,7 @@ the method will return the standard deviation value for other use if needed
 */
 public class StandardDeviation {
 
-    public double calculateSD(double[] values) {
+    public static double calculateSD(int[] values) {
 
         double sum = 0;
         double finalsum = 0;
