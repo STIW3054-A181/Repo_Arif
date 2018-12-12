@@ -25,7 +25,7 @@ public class StandardDeviation {
 
         double sumX = 0;
         double finalsumX = 0;
-        double[] x1_average = new double[2000];
+        double[] x1_average = new double[200000];
         for (int i = 0; i < values.length; i++) {
             double fvalue = (Math.pow((values[i] - average), 2));
             x1_average[i] = fvalue;
