@@ -28,7 +28,6 @@ public class StandardDeviation {
         for (int i = 0; i < values.length; i++) {
             double fvalue = (Math.pow((values[i] - average), 2));
             x1_average[i] = fvalue;
-            //System.out.println("test : " + fvalue);
         }
 
         for (double i : x1_average) {
