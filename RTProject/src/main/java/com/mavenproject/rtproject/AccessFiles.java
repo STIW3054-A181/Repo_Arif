@@ -76,7 +76,7 @@ public class AccessFiles {
             ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
             ZipEntry entry = zipIn.getNextEntry();
 
-            folderName = entry.getName();
+            folderName = entry.getName();//getting the folder name inside zip file
 
             while (entry != null) {
                 String filePath = entry.getName();
@@ -139,16 +139,15 @@ public class AccessFiles {
                 PDDocument document = PDDocument.load(new File(folderName + listFiles.get(i)));
                 PDFTextStripper stripper = new PDFTextStripper();
                 String text = stripper.getText(document);
-                
+
                 textInFile.add(text);
-                
+
                 document.close();
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return textInFile;
     }
 
