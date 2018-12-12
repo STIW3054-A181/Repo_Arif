@@ -18,9 +18,9 @@ public class StandardDeviation {
         }
 
         average = finalsum / (values.length);
-        System.out.println("Average : " + average);
+        //System.out.println("Average : " + average);
         
-        System.out.println("Total numbers : " + values.length);
+        //System.out.println("Total numbers : " + values.length);
 
         double sumX = 0;
         double finalsumX = 0;
@@ -37,7 +37,6 @@ public class StandardDeviation {
 
         double AverageX = finalsumX / (values.length);
         double stDeviation = Math.sqrt(AverageX);
-        System.out.println("Standard Deviation : " + stDeviation);
 
         return stDeviation;
     }
