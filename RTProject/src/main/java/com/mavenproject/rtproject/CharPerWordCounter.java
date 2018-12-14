@@ -9,10 +9,10 @@ package com.mavenproject.rtproject;
  *
  * @author Gifhary
  */
-public class CharPerWordCounter {
+public class CharPerWord {
 
     public static int[] countCharPerWord(String str) {
-        String[] separated = str.split(" ");
+        String[] separated = str.replaceAll("\\s+", " ").split(" ");
         int [] counter = new int [separated.length];
         
         for (int i = 0; i < separated.length; i++) {
