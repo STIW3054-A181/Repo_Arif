@@ -37,9 +37,9 @@ public class Test {
             System.out.println("");
             System.out.println("File Name\t\t: " + m.listFiles().get(i));
             System.out.println("Number Of Words\t\t: " + WordCounter.countWord(textInFile.get(i)));
-            System.out.println("Number Of Characters\t: " + WordCounter.countChar(textInFile.get(i)));
+            System.out.println("Number Of Characters\t: " + CharCounter.countChar(textInFile.get(i)));
             System.out.println("Standard Deviation\t: " + StandardDeviation.calculateSD(characterNumber.get(i)));
-            WordCounter.charAnalysis(textInFile.get(i));
+            CharCounter.charAnalysis(textInFile.get(i));
             Thread.sleep(1000);
         }
 
