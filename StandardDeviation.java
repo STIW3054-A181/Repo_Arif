@@ -9,6 +9,20 @@ it will print average, total number in the array and the standard deviation
 the method will return the standard deviation value for other use if needed
 */
 public class StandardDeviation {
+    
+    
+    public static int[] countCharPerWord(String str) {
+        String[] separated = str.replaceAll("\\s+", " ").split(" ");
+        int [] counter = new int [separated.length];
+        
+        for (int i = 0; i < separated.length; i++) {
+            String s = separated[i];
+            counter[i] = s.length();
+        }
+        
+        return counter;
+    }
+    
 
     public static double calculateSD(int[] values) {
 
