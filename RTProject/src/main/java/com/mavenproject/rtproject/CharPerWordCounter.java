@@ -5,10 +5,6 @@
  */
 package com.mavenproject.rtproject;
 
-/**
- *
- * @author Gifhary
- */
 public class CharPerWord {
 
     public static int[] countCharPerWord(String str) {
