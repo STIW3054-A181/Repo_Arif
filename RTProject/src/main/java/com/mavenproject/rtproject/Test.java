@@ -8,6 +8,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author Gifhary
+ */
 public class Test {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
@@ -28,7 +32,7 @@ public class Test {
 
         for (int i = 0; i < textInFile.size(); i++) {
             //System.out.println(textInFile.get(i)); print all text inside every file
-            characterNumber.add(CharPerWord.countCharPerWord(textInFile.get(i)));
+            characterNumber.add(StandardDeviation.countCharPerWord(textInFile.get(i)));
 
             System.out.println("");
             System.out.println("File Name\t\t: " + m.listFiles().get(i));
