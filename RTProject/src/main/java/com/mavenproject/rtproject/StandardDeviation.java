@@ -1,5 +1,7 @@
 package com.mavenproject.rtproject;
 
+import java.util.ArrayList;
+
 
 /*
 This class contain method to calculate standard deviation of a data that stored in array as double
@@ -25,10 +27,11 @@ public class StandardDeviation {
 
         double sumX = 0;
         double finalsumX = 0;
-        double[] x1_average = new double[200000];
+        ArrayList<Double> x1_average = new ArrayList();
+        
         for (int i = 0; i < values.length; i++) {
             double fvalue = (Math.pow((values[i] - average), 2));
-            x1_average[i] = fvalue;
+            x1_average.add(fvalue);
             //System.out.println("test : " + fvalue);
         }
 
