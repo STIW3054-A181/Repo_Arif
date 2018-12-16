@@ -15,15 +15,18 @@ import java.util.ArrayList;
 class TheThread extends Thread {
 
     private final String textInFile;
+    private final int[] characterNumber;
 
-    public TheThread(String textInFile) {
+    public TheThread(String textInFile, int[] characterNumber) {
         this.textInFile = textInFile;
+        this.characterNumber = characterNumber;
     }
 
     @Override
     public void run() {
         System.out.println("Number Of Words\t\t: " + WordCounter.countWord(textInFile));
         System.out.println("Number Of Characters\t: " + CharCounter.countChar(textInFile));
+        System.out.println("Standard Deviation\t: " + StandardDeviation.calculateSD(characterNumber));
         CharCounter.charAnalysis(textInFile);
     }
 }
@@ -55,9 +58,8 @@ public class TestWithThread {
 
             System.out.println("");
             System.out.println("File Name\t\t: " + m.listFiles().get(i));
-            System.out.println("Standard Deviation\t: " + StandardDeviation.calculateSD(characterNumber.get(i)));
             
-            TT[i] = new TheThread(textInFile.get(i));//multithreading
+            TT[i] = new TheThread(textInFile.get(i), characterNumber.get(i));//multithreading
             TT[i].start(); //the number of the thread started depend on how many the target files is
             
             Thread.sleep(1000);
