@@ -36,7 +36,7 @@ class TheThread extends Thread {
 }
 
 
-public class TestWithThread {
+public class Main {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
