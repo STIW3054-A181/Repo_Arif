@@ -27,7 +27,7 @@ public class Normalization {
             dcd.setValue(entry.getValue(), "Frequency", entry.getKey());
         }
 
-        JFreeChart jChart = ChartFactory.createBarChart("Character Frequency", "Character", "Frequency", dcd, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart jChart = ChartFactory.createLineChart("Character Frequency", "Character", "Frequency", dcd, PlotOrientation.VERTICAL, true, true, false);
 
         CategoryPlot plot = jChart.getCategoryPlot();
         plot.setRangeGridlinePaint(Color.BLACK);
