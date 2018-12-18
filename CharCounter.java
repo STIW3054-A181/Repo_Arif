@@ -18,13 +18,14 @@ public class CharCounter {
         return charCount;
     }
 
-    public static void charAnalysis(String str) {
+    public static Map charAnalysis(String str) {
 
         StringReader reader = new StringReader(str);
 
         int nextLetter;
         int total = 0;
         int other = 0;
+        Map ans = null;
         int[] count = new int[26];
 
         try {
@@ -39,12 +40,13 @@ public class CharCounter {
                     other++;
                 }
             }
-            Map ans = sorting(count);
+            ans = sorting(count);
             printMap(ans);
             
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return ans;
     }
 
     private static Map sorting(int[] count) {
