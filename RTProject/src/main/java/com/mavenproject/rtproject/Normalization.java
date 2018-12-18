@@ -35,6 +35,7 @@ public class Normalization {
         ChartFrame chartFrame = new ChartFrame("File name : " + fileNames, jChart, true);
         chartFrame.setSize(730, 470);
         chartFrame.setVisible(true);
+        chartFrame.setLocationRelativeTo(null);
     }
 
 }
