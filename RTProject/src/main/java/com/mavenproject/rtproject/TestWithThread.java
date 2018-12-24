@@ -61,7 +61,7 @@ public class TestWithThread {
             characterNumber.add(StandardDeviation.countCharPerWord(textInFile.get(i)));
 
             System.out.println("");
-            System.out.println("File Name\t\t: " + m.listFiles().get(i));
+            System.out.println("File Name\t\t: " + fileNames.get(i));
             
             TT[i] = new TheThread(textInFile.get(i), characterNumber.get(i), fileNames.get(i));//multithreading
             TT[i].start(); //the number of the thread started depend on how many the target files is
