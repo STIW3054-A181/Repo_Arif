@@ -14,10 +14,7 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-/**
- *
- * @author Gifhary
- */
+
 public class Normalization {
 
     public static void normalizeData(Map<String, Integer> data, String fileNames) {
