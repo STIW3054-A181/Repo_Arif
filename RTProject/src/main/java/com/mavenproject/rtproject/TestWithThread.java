@@ -9,10 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Map;
 
-/**
- *
- * @author Gifhary
- */
+
 class TheThread extends Thread {
 
     private final String textInFile;
