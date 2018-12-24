@@ -16,7 +16,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
 
-public class AccessFiles {
+public class AccessFiles implements AccessFilesInterface {
 
     public String folderName = null;
 
@@ -25,6 +25,7 @@ public class AccessFiles {
     in this case, the URL should be github repo download link and the file name
     should be in .zip format
      */
+    @Override
     public void downloadZip(URL url, File file) {
         try {
             System.out.println("Accessing the URL . . .");
@@ -68,6 +69,7 @@ public class AccessFiles {
     method between this two method to avoid confusion. The first entry in the zip file must be a folder/directory.
     If not, the other method which depending on this won't work properly.
      */
+    @Override
     public void unzip(String zipFile) {
         try {
             ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
@@ -111,6 +113,7 @@ public class AccessFiles {
     This method will listing all file names in a directory and returning all the names in String
     as an ArrayList. This method required folder/directory name as a String to work.
      */
+    @Override
     public ArrayList<String> listFiles() {
         ArrayList<String> fileNames = new ArrayList();
 
@@ -128,6 +131,7 @@ public class AccessFiles {
     which is previously downloaded, it will write the texts to ArrayList too as String, each file's texts
     will be stored in each node. If there are 5 files, there will be 5 nodes inside ArrayList.
      */
+    @Override
     public ArrayList<String> readFiles(ArrayList<String> listFiles) {
         ArrayList<String> textInFile = new ArrayList();
         try {
