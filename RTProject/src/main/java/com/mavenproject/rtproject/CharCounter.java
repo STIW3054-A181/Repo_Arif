@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class CharCounter {
-    
+
     public static int countChar(String str) {
         int charCount = 0;
 
@@ -29,7 +29,7 @@ public class CharCounter {
         int[] count = new int[26];
 
         try {
-            System.out.println("Letter            Frequency");
+            System.out.println("\nLetter            Frequency");
             while ((nextLetter = reader.read()) != -1) {
                 char current = (char) nextLetter;
                 current = Character.toLowerCase(current);
@@ -42,7 +42,7 @@ public class CharCounter {
             }
             ans = sorting(count);
             printMap(ans);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -75,5 +75,5 @@ public class CharCounter {
             System.out.println("  " + entry.getKey() + "        :        " + entry.getValue());
         }
     }
-    
+
 }

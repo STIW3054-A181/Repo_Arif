@@ -1,10 +1,3 @@
-/*
-                                            READ ME PLEASE :) !!!
-
-All method down bellow is to access the files in the github repository, download everything in the repository
-as a ZIP file, this class also include method to extract the ZIP file and read the file, all the files that has
-been read will be returned as string in a loop until all the text inside all the files has been returned.
- */
 package com.mavenproject.rtproject;
 
 import java.io.*;
@@ -15,19 +8,22 @@ import java.util.zip.ZipInputStream;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 
-
-public class AccessFiles {
+public class AccessFiles implements AccessFilesInterface {
 
     public String folderName = null;
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
 
     /*
     This method required URL source and file name for the downloaded file
     in this case, the URL should be github repo download link and the file name
     should be in .zip format
      */
+    @Override
     public void downloadZip(URL url, File file) {
         try {
-            System.out.println("Accessing the URL . . .");
+            System.out.println(ANSI_GREEN + "Accessing the URL . . ." + ANSI_RESET);
             InputStream input = url.openStream();
             if (file.exists()) {
                 if (file.isDirectory()) {
@@ -55,9 +51,10 @@ public class AccessFiles {
             input.close();
             output.close();
 
-            System.out.println("File '" + file + "' downloaded successfully!");
+            System.out.println(ANSI_GREEN + "File '" + file + "' downloaded successfully!" + ANSI_RESET);
         } catch (IOException ioEx) {
-            ioEx.printStackTrace();
+            System.out.println(ANSI_RED + "URL cannot be accessed!\nPlease check the"
+                    + "URL or your internet connection" + ANSI_RESET);
         }
     }
 
@@ -68,6 +65,7 @@ public class AccessFiles {
     method between this two method to avoid confusion. The first entry in the zip file must be a folder/directory.
     If not, the other method which depending on this won't work properly.
      */
+    @Override
     public void unzip(String zipFile) {
         try {
             ZipInputStream zipIn = new ZipInputStream(new FileInputStream(zipFile));
@@ -89,36 +87,46 @@ public class AccessFiles {
                 entry = zipIn.getNextEntry();
             }
             zipIn.close();
-            System.out.println("File '" + zipFile + "' extracted successfully!");
+            System.out.println(ANSI_GREEN + "File '" + zipFile + "' extracted successfully!" + ANSI_RESET);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(ANSI_RED + "File cannot be written!" + ANSI_RESET);
         }
     }
 
     //Here it is :) let this method stay under unzip method
-    private void extractFile(ZipInputStream zipIn, String filePath) throws IOException {
-        BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
-        byte[] bytesIn = new byte[4096];
-        int read = 0;
-        while ((read = zipIn.read(bytesIn)) != -1) {
-            bos.write(bytesIn, 0, read);
+    private void extractFile(ZipInputStream zipIn, String filePath) {
+
+        try {
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(filePath));
+            byte[] bytesIn = new byte[4096];
+            int read = 0;
+            while ((read = zipIn.read(bytesIn)) != -1) {
+                bos.write(bytesIn, 0, read);
+            }
+            bos.close();
+        } catch (IOException e) {
+            System.out.println(ANSI_RED + "File cannot be extracted!" + ANSI_RESET);
         }
-        bos.close();
     }
 
     /*
     This method will listing all file names in a directory and returning all the names in String
     as an ArrayList. This method required folder/directory name as a String to work.
      */
+    @Override
     public ArrayList<String> listFiles() {
         ArrayList<String> fileNames = new ArrayList();
 
-        File dir = new File(folderName);
-        File[] files = dir.listFiles();
+        try {
+            File dir = new File(folderName);
+            File[] files = dir.listFiles();
 
-        for (File f : files) {
-            fileNames.add(f.getName());
+            for (File f : files) {
+                fileNames.add(f.getName());
+            }
+        } catch (Exception e) {
+            System.out.println(ANSI_RED + "File not found!" + ANSI_RESET);
         }
         return fileNames;
     }
@@ -128,6 +136,7 @@ public class AccessFiles {
     which is previously downloaded, it will write the texts to ArrayList too as String, each file's texts
     will be stored in each node. If there are 5 files, there will be 5 nodes inside ArrayList.
      */
+    @Override
     public ArrayList<String> readFiles(ArrayList<String> listFiles) {
         ArrayList<String> textInFile = new ArrayList();
         try {
@@ -143,7 +152,7 @@ public class AccessFiles {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(ANSI_RED+"File cannot be opened"+ANSI_RESET);
         }
         return textInFile;
     }
