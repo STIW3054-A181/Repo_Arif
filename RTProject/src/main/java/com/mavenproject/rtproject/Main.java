@@ -5,6 +5,9 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 class TheThread extends Thread {
 
@@ -45,7 +48,9 @@ public class Main {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
-
+        int processor = Runtime.getRuntime().availableProcessors();
+        ExecutorService service = Executors.newFixedThreadPool(processor);
+        
         URL url = new URL(Common.URL);//github repo download link
 
         File setFileName = new File("TargetFile.zip");//set the file downloaded file name
