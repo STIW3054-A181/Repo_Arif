@@ -23,7 +23,7 @@ public class Test {
         m.unzip(zipFile);//extract zip file, it cal also extract any other zip file
 
         ArrayList<String> textInFile = new ArrayList();//ArrayList to store texts from all files
-        textInFile = m.readFiles(m.listFiles());//assign returned ArrayList from readFile() method to "list" ArrayList
+        textInFile = m.readFiles(m.listFiles());//assign returned ArrayList from readFile() method to "textInFile" ArrayList
 
         ArrayList<int[]> characterNumber = new ArrayList();
         
