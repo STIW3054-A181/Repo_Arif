@@ -14,10 +14,14 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
+/**
+ *
+ * @author Gifhary
+ */
+public class Normalization implements NormalizationInterface {
 
-public class Normalization {
-
-    public static void normalizeData(Map<String, Integer> data, String fileNames) {
+    @Override
+    public void normalizeData(Map<String, Integer> data, String fileNames) {
 
         DefaultCategoryDataset dcd = new DefaultCategoryDataset();
         for (Map.Entry<String, Integer> entry : data.entrySet()) {
