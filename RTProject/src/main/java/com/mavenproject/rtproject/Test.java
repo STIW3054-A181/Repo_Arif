@@ -13,7 +13,7 @@ public class Test {
 
     public static void main(String[] args) throws MalformedURLException, InterruptedException {
 
-        URL url = new URL("https://github.com/gifhary/Test_File/archive/master.zip");//github repo download link
+        URL url = new URL(Common.URL);//github repo download link
 
         File setFileName = new File("TargetFile.zip");//set the file downloaded file name
         String zipFile = "TargetFile.zip";//input file name in String, it should be same as setFileName
