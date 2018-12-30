@@ -7,7 +7,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 
 class TheThread extends Thread {
 
@@ -82,13 +81,15 @@ public class Main {
 
 
             TT[i] = new TheThread(textInFile.get(i), characterNumber.get(i), fileNames.get(i), X);//multithreading
-            TT[i].start(); //the number of the thread started depend on how many the target files is
+            //TT[i].start(); the number of the thread started depend on how many the target files is
+            service.submit(TT[i]);
 
             Thread.sleep(1000);
 
             SDList.add(StandardDeviation.calculateSD(characterNumber.get(i)));
             zScores.add(StandardDeviation.zScore(characterNumber.get(i), SDList.get(i), X));
         }
+        service.shutdown();
 
         Normalization norm = new Normalization();
         norm.normalizeData(zScores, fileNames);
